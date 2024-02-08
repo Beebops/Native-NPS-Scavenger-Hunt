@@ -1,10 +1,16 @@
-import { StyleSheet, View, Image } from 'react-native'
+import {
+  StyleSheet,
+  View,
+  Image,
+  ScrollView,
+  TouchableOpacity,
+} from 'react-native'
 import StyledText from '../components/StyledText'
 import SignUpForm from '../components/SignUpForm'
 
-const SignUp = () => {
+const SignUp = ({ navigation }) => {
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Image
         source={require('../assets/images/coyote.jpg')}
         style={styles.image}
@@ -15,11 +21,16 @@ const SignUp = () => {
       </View>
       <View style={styles.formContainer}>
         <SignUpForm />
-        <StyledText style={styles.bottomText}>
-          Already have an account? Login here
-        </StyledText>
+        <View style={styles.inlineTextContainer}>
+          <StyledText style={styles.bottomText}>
+            Already have an account?
+          </StyledText>
+          <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+            <StyledText style={[styles.bottomText]}> Login here</StyledText>
+          </TouchableOpacity>
+        </View>
       </View>
-    </View>
+    </ScrollView>
   )
 }
 
@@ -47,6 +58,11 @@ const styles = StyleSheet.create({
   bottomText: {
     marginTop: 8,
     textAlign: 'center',
+  },
+  inlineTextContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginTop: 8,
   },
 })
 

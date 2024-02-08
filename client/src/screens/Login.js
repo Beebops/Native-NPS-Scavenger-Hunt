@@ -1,14 +1,19 @@
-import { StyleSheet, View, Image } from 'react-native'
+import {
+  StyleSheet,
+  View,
+  Image,
+  SafeAreaView,
+  TouchableOpacity,
+} from 'react-native'
 import StyledText from '../components/StyledText'
 import LoginForm from '../components/LoginForm'
 
-const Login = () => {
+const Login = ({ navigation }) => {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Image
         source={require('../assets/images/bison.jpg')}
         style={styles.image}
-        // contentFit='cover'
       />
       <View style={styles.headingContainer}>
         <StyledText style={styles.heading}>Login to your account</StyledText>
@@ -16,11 +21,16 @@ const Login = () => {
       </View>
       <View style={styles.formContainer}>
         <LoginForm />
-        <StyledText style={styles.bottomText}>
-          Don't have an account? Sign up here
-        </StyledText>
+        <View style={styles.inlineTextContainer}>
+          <StyledText style={styles.bottomText}>
+            Don't have an account?
+          </StyledText>
+          <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
+            <StyledText style={[styles.bottomText]}> Sign up here</StyledText>
+          </TouchableOpacity>
+        </View>
       </View>
-    </View>
+    </SafeAreaView>
   )
 }
 
@@ -48,6 +58,11 @@ const styles = StyleSheet.create({
   bottomText: {
     marginTop: 8,
     textAlign: 'center',
+  },
+  inlineTextContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginTop: 8,
   },
 })
 
