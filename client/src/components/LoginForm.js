@@ -5,7 +5,7 @@ import StyledText from './StyledText'
 import StyledButton from './StyledButton'
 import { FormStyles } from './FormStyles'
 
-const LoginForm = () => {
+const LoginForm = ({ navigation }) => {
   return (
     <Formik
       initialValues={{
@@ -14,9 +14,13 @@ const LoginForm = () => {
       }}
       validationSchema={loginSchema}
       onSubmit={(values, actions) => {
+        // Simulate successful login
         alert(JSON.stringify(values))
+        // Reset form if needed
         actions.resetForm()
         actions.setSubmitting(false)
+        // Navigate to user's Home screen
+        navigation.navigate('Home')
       }}
     >
       {({ handleChange, handleSubmit, values, errors, touched }) => (
@@ -39,6 +43,7 @@ const LoginForm = () => {
             value={values.password}
             placeholder={'enter your password'}
             autoCapitalize='none'
+            secureTextEntry={true}
           />
           {touched.password && errors.password && (
             <Text style={FormStyles.error}>{errors.password}</Text>

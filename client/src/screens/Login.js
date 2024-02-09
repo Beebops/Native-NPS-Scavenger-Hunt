@@ -20,7 +20,7 @@ const Login = ({ navigation }) => {
         <StyledText>Welcome back! Please enter your details</StyledText>
       </View>
       <View style={styles.formContainer}>
-        <LoginForm />
+        <LoginForm navigation={navigation} />
         <View style={styles.inlineTextContainer}>
           <StyledText style={styles.bottomText}>
             Don't have an account?
