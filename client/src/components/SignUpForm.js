@@ -1,8 +1,9 @@
 import { signUpSchema } from '../validations/signupValidation'
-import { View, TextInput, Text, StyleSheet, Button } from 'react-native'
+import { View, TextInput, Text } from 'react-native'
 import { Formik } from 'formik'
 import StyledText from './StyledText'
 import StyledButton from './StyledButton'
+import { FormStyles } from './FormStyles'
 
 const SignUpForm = () => {
   return (
@@ -28,10 +29,10 @@ const SignUpForm = () => {
         touched,
         errors,
       }) => (
-        <View style={styles.container}>
-          <StyledText style={styles.label}>Username</StyledText>
+        <View>
+          <StyledText style={FormStyles.label}>Username</StyledText>
           <TextInput
-            style={styles.input}
+            style={FormStyles.input}
             onChangeText={handleChange('userName')}
             onBlur={handleBlur('userName')}
             value={values.userName}
@@ -39,11 +40,11 @@ const SignUpForm = () => {
             autoCapitalize='none'
           />
           {touched.userName && errors.userName && (
-            <Text style={styles.error}>{errors.userName}</Text>
+            <Text style={FormStyles.error}>{errors.userName}</Text>
           )}
-          <StyledText style={styles.label}>Email</StyledText>
+          <StyledText style={FormStyles.label}>Email</StyledText>
           <TextInput
-            style={styles.input}
+            style={FormStyles.input}
             onChangeText={handleChange('email')}
             onBlur={handleBlur('email')}
             value={values.email}
@@ -51,11 +52,11 @@ const SignUpForm = () => {
             autoCapitalize='none'
           />
           {touched.email && errors.email && (
-            <Text style={styles.error}>{errors.email}</Text>
+            <Text style={FormStyles.error}>{errors.email}</Text>
           )}
-          <StyledText style={styles.label}>Password</StyledText>
+          <StyledText style={FormStyles.label}>Password</StyledText>
           <TextInput
-            style={styles.input}
+            style={FormStyles.input}
             onChangeText={handleChange('password')}
             onBlur={handleBlur('password')}
             value={values.password}
@@ -64,11 +65,11 @@ const SignUpForm = () => {
             secureTextEntry={true}
           />
           {touched.password && errors.password && (
-            <Text style={styles.error}>{errors.password}</Text>
+            <Text style={FormStyles.error}>{errors.password}</Text>
           )}
-          <StyledText style={styles.label}>Confirm Password</StyledText>
+          <StyledText style={FormStyles.label}>Confirm Password</StyledText>
           <TextInput
-            style={styles.input}
+            style={FormStyles.input}
             onChangeText={handleChange('confirmPassword')}
             onBlur={handleBlur('confirmPassword')}
             value={values.confirmPassword}
@@ -82,24 +83,5 @@ const SignUpForm = () => {
     </Formik>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {},
-  label: {
-    fontWeight: 'bold',
-    marginBottom: 5,
-  },
-  input: {
-    borderWidth: 1,
-    borderColor: '#A58E91',
-    borderRadius: 10,
-    padding: 10,
-    marginBottom: 15,
-  },
-  error: {
-    color: '#E97334',
-    marginBottom: 10,
-  },
-})
 
 export default SignUpForm
