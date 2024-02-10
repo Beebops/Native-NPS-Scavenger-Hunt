@@ -9,26 +9,30 @@ import {
 } from 'react-native'
 import { SelectList } from 'react-native-dropdown-select-list'
 import StyledText from '../components/StyledText'
+import SelectListComponent from '../components/SelectListComponent'
 import { states } from '../data/stateData'
 import { nationalParks } from '../data/parkData'
 
 const CreateHunt = () => {
   const [selected, setSelected] = useState('')
-
+  console.log(states)
+  console.log(nationalParks)
   return (
     <ScrollView style={styles.container}>
-      <StyledText>Select a state</StyledText>
-      <SelectList
+      <StyledText style={styles.selectText}>Select a state</StyledText>
+      <SelectListComponent data={states} />
+      {/* <SelectList
         data={states}
         setSelected={(val) => setSelected(val)}
         save='value'
-      />
-      <StyledText>Select a park</StyledText>
-      <SelectList
+      /> */}
+      <StyledText style={styles.selectText}>Select a park</StyledText>
+      <SelectListComponent data={nationalParks} />
+      {/* <SelectList
         data={nationalParks}
         setSelected={(val) => setSelected(val)}
         save='value'
-      />
+      /> */}
     </ScrollView>
   )
 }
@@ -36,11 +40,11 @@ const CreateHunt = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: StatusBar.currentHeight,
+    padding: 20,
   },
-  scrollView: {
-    backgroundColor: 'pink',
-    marginHorizontal: 20,
+  selectText: {
+    fontWeight: 'bold',
+    marginBottom: 5,
   },
 })
 
