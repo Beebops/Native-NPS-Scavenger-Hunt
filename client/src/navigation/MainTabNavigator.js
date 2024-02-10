@@ -16,7 +16,7 @@ const MainTabNavigator = () => {
 
           if (route.name === 'Home') {
             iconName = 'cabin'
-          } else if (route.name === 'Create') {
+          } else if (route.name === 'New Hunt') {
             iconName = 'format-list-bulleted-add'
           } else if (route.name === 'Camera') {
             iconName = 'photo-camera'
@@ -36,7 +36,7 @@ const MainTabNavigator = () => {
     >
       <Tab.Screen name='Home' component={Home} />
       <Tab.Screen name='Camera' component={Camera} />
-      <Tab.Screen name='Create' component={CreateHunt} />
+      <Tab.Screen name='New Hunt' component={CreateHunt} />
       <Tab.Screen name='Logout' component={Logout} />
     </Tab.Navigator>
   )

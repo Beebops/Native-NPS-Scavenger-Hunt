@@ -2,7 +2,7 @@ import {
   StyleSheet,
   View,
   Image,
-  SafeAreaView,
+  ScrollView,
   TouchableOpacity,
 } from 'react-native'
 import StyledText from '../components/StyledText'
@@ -10,7 +10,7 @@ import LoginForm from '../components/LoginForm'
 
 const Login = ({ navigation }) => {
   return (
-    <SafeAreaView style={styles.container}>
+    <ScrollView style={styles.container}>
       <Image
         source={require('../assets/images/bison.jpg')}
         style={styles.image}
@@ -30,7 +30,7 @@ const Login = ({ navigation }) => {
           </TouchableOpacity>
         </View>
       </View>
-    </SafeAreaView>
+    </ScrollView>
   )
 }
 
