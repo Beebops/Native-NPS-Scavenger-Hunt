@@ -10,10 +10,10 @@ import {
 
 import StyledText from '../components/StyledText'
 
-const Hunts = ({ navigation }) => {
+const Favorites = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.container}>
-      <StyledText>Create your first Hunt</StyledText>
+      <StyledText>You have no favorites yet</StyledText>
       <Button title='Go to home' onPress={() => navigation.navigate('Home')} />
     </SafeAreaView>
   )
@@ -27,4 +27,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default Hunts
+export default Favorites

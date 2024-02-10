@@ -20,7 +20,7 @@ const LoginForm = ({ navigation }) => {
         actions.resetForm()
         actions.setSubmitting(false)
         // Navigate to user's Home screen
-        navigation.navigate('Home')
+        navigation.navigate('MainTabNavigator', { screen: 'Home' })
       }}
     >
       {({ handleChange, handleSubmit, values, errors, touched }) => (
