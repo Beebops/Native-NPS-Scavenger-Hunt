@@ -1,5 +1,4 @@
 import { MultipleSelectList } from 'react-native-dropdown-select-list'
-import { useState } from 'react'
 
 const MultipleSelectListComponent = ({
   data,
@@ -7,7 +6,6 @@ const MultipleSelectListComponent = ({
   setSelected,
   onSelect,
 }) => {
-  // const [selected, setSelected] = useState([])
   return (
     <MultipleSelectList
       data={data}
