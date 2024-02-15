@@ -1,15 +1,19 @@
-import { useState } from 'react'
 import { SelectList } from 'react-native-dropdown-select-list'
+import { nationalParks } from '../data/parkData'
+import { useState } from 'react'
 
-const SelectListComponent = ({ data }) => {
+const SelectListComponent = ({ data, label }) => {
   const [selected, setSelected] = useState('')
 
   return (
-    <SelectList
-      data={data}
-      setSelected={(val) => setSelected(val)}
-      save='value'
-    />
+    <>
+      <SelectList
+        data={nationalParks}
+        label={'Parks'}
+        setSelected={(val) => setSelected(val)}
+        onSelect={() => console.log(selected)}
+      />
+    </>
   )
 }
 

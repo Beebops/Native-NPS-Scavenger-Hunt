@@ -1,4 +1,4 @@
-const amphibians = [
+export const amphibians = [
   { key: '1', value: 'American Bullfrog' },
   { key: '2', value: 'Eastern Newt' },
   { key: '3', value: 'Spotted Salamander' },

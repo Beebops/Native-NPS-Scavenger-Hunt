@@ -1,4 +1,4 @@
-const fish = [
+export const fish = [
   { key: '1', value: 'Rainbow Trout' },
   { key: '2', value: 'Largemouth Bass' },
   { key: '3', value: 'Bluegill' },

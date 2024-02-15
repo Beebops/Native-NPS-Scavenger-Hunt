@@ -1,4 +1,4 @@
-const reptiles = [
+export const reptiles = [
   { key: '1', value: 'Gopher Tortoise' },
   { key: '2', value: 'Eastern Diamondback Rattlesnake' },
   { key: '3', value: 'Alligator Snapping Turtle' },
