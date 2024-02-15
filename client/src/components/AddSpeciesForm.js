@@ -10,14 +10,18 @@ import { amphibians } from '../data/amphibianData'
 import { fish } from '../data/fishData'
 
 const AddSpeciesForm = () => {
-  //const [selectedPark, setSelectedPark] = useState('')
+  const [selectedPark, setSelectedPark] = useState('')
   const [selectedMammals, setSelectedMammals] = useState([])
   const [selectedBirds, setSelectedBirds] = useState([])
 
   return (
     <>
       <StyledText>Select a park</StyledText>
-      <SelectListComponent data={nationalParks} />
+      <SelectListComponent
+        data={nationalParks}
+        setSelected={(val) => setSelectedPark(val)}
+        onSelect={() => console.log(selectedPark)}
+      />
       <MultipleSelectListComponent
         data={mammals}
         label='Mammals'

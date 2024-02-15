@@ -2,17 +2,12 @@ import { SelectList } from 'react-native-dropdown-select-list'
 import { nationalParks } from '../data/parkData'
 import { useState } from 'react'
 
-const SelectListComponent = ({ data, label }) => {
-  const [selected, setSelected] = useState('')
+const SelectListComponent = ({ data, label, setSelected, onSelect }) => {
+  // const [selected, setSelected] = useState('')
 
   return (
     <>
-      <SelectList
-        data={nationalParks}
-        label={'Parks'}
-        setSelected={(val) => setSelected(val)}
-        onSelect={() => console.log(selected)}
-      />
+      <SelectList data={data} setSelected={setSelected} onSelect={onSelect} />
     </>
   )
 }
