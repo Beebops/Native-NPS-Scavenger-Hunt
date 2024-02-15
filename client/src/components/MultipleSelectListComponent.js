@@ -1,14 +1,19 @@
 import { MultipleSelectList } from 'react-native-dropdown-select-list'
 import { useState } from 'react'
 
-const MultipleSelectListComponent = ({ data, label }) => {
-  const [selected, setSelected] = useState([])
+const MultipleSelectListComponent = ({
+  data,
+  label,
+  setSelected,
+  onSelect,
+}) => {
+  // const [selected, setSelected] = useState([])
   return (
     <MultipleSelectList
       data={data}
-      setSelected={(val) => setSelected(val)}
+      setSelected={setSelected}
       save='value'
-      onSelect={() => console.log(selected)}
+      onSelect={onSelect}
       label={label}
     />
   )
