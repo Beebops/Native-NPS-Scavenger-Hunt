@@ -7,14 +7,12 @@ import {
 } from 'react-native'
 import StyledText from '../components/StyledText'
 import SignUpForm from '../components/SignUpForm'
+import HeaderImage from '../components/HeaderImage'
 
 const SignUp = ({ navigation }) => {
   return (
     <ScrollView style={styles.container}>
-      <Image
-        source={require('../assets/images/coyote.jpg')}
-        style={styles.image}
-      />
+      <HeaderImage source={require('../assets/images/coyote.jpg')} />
       <View style={styles.headingContainer}>
         <StyledText style={styles.heading}>Create an account</StyledText>
         <StyledText>Welcome! Please enter your details</StyledText>

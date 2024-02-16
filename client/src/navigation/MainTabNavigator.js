@@ -32,6 +32,13 @@ const MainTabNavigator = () => {
         },
         tabBarActiveTintColor: '#FFFFFF',
         tabBarInactiveTintColor: '#916569',
+        headerStyle: {
+          backgroundColor: '#230E10',
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
       })}
     >
       <Tab.Screen name='Home' component={Home} />

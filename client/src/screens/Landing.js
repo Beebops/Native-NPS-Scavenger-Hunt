@@ -1,15 +1,9 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  ImageBackground,
-  SafeAreaView,
-} from 'react-native'
+import { StyleSheet, Text, View, ImageBackground } from 'react-native'
 import StyledButton from '../components/StyledButton'
 
 export default function Landing({ navigation }) {
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <ImageBackground
         style={styles.image}
         resizeMode='cover'
@@ -22,7 +16,7 @@ export default function Landing({ navigation }) {
           onPress={() => navigation.navigate('SignUp')}
         ></StyledButton>
       </ImageBackground>
-    </SafeAreaView>
+    </View>
   )
 }
 

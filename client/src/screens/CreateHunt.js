@@ -1,11 +1,4 @@
-import {
-  SafeAreaView,
-  Text,
-  StyleSheet,
-  StatusBar,
-  View,
-  ScrollView,
-} from 'react-native'
+import { StyleSheet, ScrollView } from 'react-native'
 
 import CreateHuntForm from '../components/CreateHuntForm'
 

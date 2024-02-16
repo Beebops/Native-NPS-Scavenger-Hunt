@@ -41,53 +41,58 @@ const CreateHuntForm = ({ navigation }) => {
     setSelectedReptiles([])
     setSelectedAmphibians([])
     setSelectedFish([])
-    navigation.navigate('Hunts')
+    navigation.navigate('Hunt', { huntTitle: title })
   }
 
   return (
     <View>
-      <StyledText>Hunt Title</StyledText>
+      <StyledText style={FormStyles.label}>Hunt title</StyledText>
       <TextInput
         placeholder='Add a title'
         value={title}
         onChangeText={setTitle}
         style={FormStyles.input}
       />
-      <StyledText>Select a park</StyledText>
+      <StyledText style={FormStyles.label}>Select a park</StyledText>
       <SelectListComponent
         data={nationalParks}
         setSelected={(val) => setSelectedPark(val)}
-        onSelect={() => console.log(selectedPark)}
+        // onSelect={() => console.log(selectedPark)}
       />
+      <StyledText style={FormStyles.label}>Select mammals</StyledText>
       <MultipleSelectListComponent
         data={mammals}
         label='Mammals'
         setSelected={(val) => setSelectedMammals(val)}
-        onSelect={() => console.log(selectedMammals)}
+        // onSelect={() => console.log(selectedMammals)}
       />
+      <StyledText style={FormStyles.label}>Select birds</StyledText>
       <MultipleSelectListComponent
         data={birds}
         label='Birds'
         setSelected={(val) => setSelectedBirds(val)}
-        onSelect={() => console.log(selectedBirds)}
+        // onSelect={() => console.log(selectedBirds)}
       />
+      <StyledText style={FormStyles.label}>Select reptiles</StyledText>
       <MultipleSelectListComponent
         data={reptiles}
         label='Reptiles'
         setSelected={(val) => setSelectedReptiles(val)}
-        onSelect={() => console.log(selectedReptiles)}
+        // onSelect={() => console.log(selectedReptiles)}
       />
+      <StyledText style={FormStyles.label}>Select amphibians</StyledText>
       <MultipleSelectListComponent
         data={amphibians}
         label='Amphibians'
         setSelected={(val) => setSelectedAmphibians(val)}
-        onSelect={() => console.log(selectedAmphibians)}
+        // onSelect={() => console.log(selectedAmphibians)}
       />
+      <StyledText style={FormStyles.label}>Select fish</StyledText>
       <MultipleSelectListComponent
         data={fish}
         label='Fish'
         setSelected={(val) => setSelectedFish(val)}
-        onSelect={() => console.log(selectedFish)}
+        // onSelect={() => console.log(selectedFish)}
       />
       <StyledButton
         onPress={handleSubmit}
