@@ -7,12 +7,12 @@ import {
   ScrollView,
 } from 'react-native'
 
-import AddSpeciesForm from '../components/CreateHuntForm'
+import CreateHuntForm from '../components/CreateHuntForm'
 
-const CreateHunt = () => {
+const CreateHunt = ({ navigation }) => {
   return (
     <ScrollView style={styles.container}>
-      <AddSpeciesForm />
+      <CreateHuntForm navigation={navigation} />
     </ScrollView>
   )
 }

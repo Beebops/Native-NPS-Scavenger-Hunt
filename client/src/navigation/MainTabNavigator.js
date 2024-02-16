@@ -26,12 +26,12 @@ const MainTabNavigator = () => {
           return <MaterialIcons name={iconName} size={24} color={color} />
         },
         tabBarStyle: {
-          backgroundColor: '#3F5800',
+          backgroundColor: '#230E10',
           paddingTop: 6,
           paddingBottom: 6,
         },
         tabBarActiveTintColor: '#FFFFFF',
-        tabBarInactiveTintColor: '#A9C464',
+        tabBarInactiveTintColor: '#916569',
       })}
     >
       <Tab.Screen name='Home' component={Home} />

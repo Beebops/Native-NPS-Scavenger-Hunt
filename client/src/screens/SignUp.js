@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   bottomText: {
-    marginTop: 8,
+    marginBottom: 25,
     textAlign: 'center',
   },
   inlineTextContainer: {

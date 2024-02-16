@@ -36,6 +36,7 @@ const styles = StyleSheet.create({
   image: {
     flex: 1,
     justifyContent: 'center',
+    alignItems: 'center',
     width: '100%',
     height: '100%',
   },
@@ -51,8 +52,9 @@ const styles = StyleSheet.create({
   },
   button: {
     position: 'absolute',
-    bottom: 30,
+    bottom: 20,
     left: 0,
     right: 0,
+    marginHorizontal: 15,
   },
 })

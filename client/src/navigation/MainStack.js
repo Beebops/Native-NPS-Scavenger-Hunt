@@ -6,6 +6,7 @@ import Hunts from '../screens/Hunts'
 import Favorites from '../screens/Favorites'
 import PhotoGallery from '../screens/PhotoGallery'
 import MainTabNavigator from './MainTabNavigator'
+import CreateHunt from '../screens/CreateHunt'
 
 const Stack = createNativeStackNavigator()
 
@@ -40,6 +41,11 @@ const MainStack = () => {
       <Stack.Screen
         name='PhotoGallery'
         component={PhotoGallery}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name='CreateHunts'
+        component={CreateHunt}
         options={{ headerShown: false }}
       />
       <Stack.Screen
