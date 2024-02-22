@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import * as Yup from 'yup'
-import { TextInput, View } from 'react-native'
+import { TextInput, View, StyleSheet } from 'react-native'
 import StyledText from './StyledText'
 import StyledButton from './StyledButton'
-import { FormSubmitBtnStyles } from './FormSubmitBtnStyles'
+
 import { FormStyles } from './FormStyles'
 import SelectListComponent from './SelectListComponent'
 import MultipleSelectListComponent from './MultipleSelectListComponent'
@@ -130,11 +130,18 @@ const CreateHuntForm = ({ navigation }) => {
       <StyledButton
         onPress={handleSubmit}
         title='Create Hunt'
-        style={FormSubmitBtnStyles}
+        style={styles.submitBtn}
       />
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+  submitBtn: {
+    marginTop: 18,
+    marginBottom: 25,
+  },
+})
 
 export default CreateHuntForm
 

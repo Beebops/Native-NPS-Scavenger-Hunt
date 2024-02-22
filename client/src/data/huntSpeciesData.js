@@ -7,7 +7,7 @@ export const huntSpeciesData = [
   },
   {
     id: 2,
-    commonName: 'Coyote with a really long name',
+    commonName: 'Coyote',
     scientificName: 'Canis latrans',
     isFound: false,
   },
