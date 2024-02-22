@@ -5,25 +5,38 @@ import {
   StyleSheet,
   StatusBar,
   View,
-  Button,
+  Pressable,
+  ScrollView,
 } from 'react-native'
-
+import LgCard from '../components/LgCard'
 import StyledText from '../components/StyledText'
 
-const Hunts = ({ navigation }) => {
+const Hunts = ({ navigation, numberOfHunts = 1 }) => {
   return (
-    <SafeAreaView style={styles.container}>
-      <StyledText>Create your first Hunt</StyledText>
-      <Button title='Go to home' onPress={() => navigation.navigate('Home')} />
-    </SafeAreaView>
+    <ScrollView contentContainerStyle={styles.container}>
+      <Pressable onPress={() => navigation.navigate('Hunt')}>
+        {({ pressed }) => (
+          <View style={pressed ? styles.pressedCard : undefined}>
+            <LgCard
+              title='Hunt Title'
+              iconName='binoculars'
+              image={require('../assets/images/acadia-national-park.jpg')}
+            />
+          </View>
+        )}
+      </Pressable>
+    </ScrollView>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: 'center',
+    flexGrow: 1,
     justifyContent: 'center',
+    padding: 20,
+  },
+  pressedCard: {
+    opacity: 0.5,
   },
 })
 

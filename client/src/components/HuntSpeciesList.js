@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { FlatList, View, StyleSheet } from 'react-native'
 import SpeciesListItem from './SpeciesListItem'
 

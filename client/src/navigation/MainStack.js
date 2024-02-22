@@ -43,7 +43,7 @@ const MainStack = () => {
       <Stack.Screen
         name='Hunts'
         component={Hunts}
-        options={{ headerShown: false }}
+        options={{ headerShown: true, headerBackTitleVisible: false }}
       />
       <Stack.Screen
         name='Favorites'
@@ -64,7 +64,7 @@ const MainStack = () => {
         name='Hunt'
         component={Hunt}
         options={({ route }) => ({
-          title: route.params.huntTitle,
+          // title: route.params.huntTitle,
           headerBackTitleVisible: false,
         })}
       />
