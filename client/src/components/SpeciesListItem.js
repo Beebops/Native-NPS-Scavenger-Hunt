@@ -12,7 +12,7 @@ const SpeciesListItem = ({
     <View style={styles.speciesItem}>
       <CustomCheckbox
         style={styles.speciesCheckBox}
-        isChecked={!isFound}
+        isChecked={isFound}
         onCheckChange={onFoundChange}
       />
       <StyledText style={styles.speciesText}>{commonName}</StyledText>

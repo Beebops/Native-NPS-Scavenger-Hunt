@@ -10,12 +10,15 @@ const Hunt = () => {
   const [speciesData, setSpeciesData] = useState(huntSpeciesData)
   const [allFound, setAllFound] = useState(false)
 
-  // update the species data whenever checkbox is toggled
   useEffect(() => {
-    setAllFound(checkForAllFound(speciesData))
+    const areAllFound = speciesData.every((species) => species.isFound)
+    setAllFound(areAllFound)
+    // const species = speciesData.map((species) => {
+    //   return { species: species.commonName, isFound: species.isFound }
+    // })
+    // console.log(species)
+    // console.log('all are found?:', areAllFound)
   }, [speciesData])
-
-  const checkForAllFound = (data) => data.every((species) => species.isFound)
 
   const toggleFoundState = (id) => {
     const newData = speciesData.map((item) => {
@@ -40,14 +43,13 @@ const Hunt = () => {
       />
       <HuntSpeciesList
         speciesData={speciesData}
-        checkForAllFound={checkForAllFound}
         toggleIsFound={toggleFoundState}
       />
       <StyledButton
         onPress={handleSubmit}
         title='Mark complete'
         style={styles.submitBtn}
-        // disable if checkforallfound is false
+        disabled={!allFound}
       ></StyledButton>
     </View>
   )

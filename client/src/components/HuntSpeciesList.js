@@ -2,9 +2,7 @@ import { useState } from 'react'
 import { FlatList, View, StyleSheet } from 'react-native'
 import SpeciesListItem from './SpeciesListItem'
 
-const HuntSpeciesList = ({ speciesData, checkForAllFound, toggleIsFound }) => {
-  const allFound = checkForAllFound(speciesData)
-
+const HuntSpeciesList = ({ speciesData, toggleIsFound }) => {
   return (
     <View style={styles.container}>
       <FlatList
