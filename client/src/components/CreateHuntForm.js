@@ -1,10 +1,13 @@
 import { useState } from 'react'
-import { TextInput, View, StyleSheet } from 'react-native'
+import * as Yup from 'yup'
+import { TextInput, View } from 'react-native'
 import StyledText from './StyledText'
 import StyledButton from './StyledButton'
+import { FormSubmitBtnStyles } from './FormSubmitBtnStyles'
 import { FormStyles } from './FormStyles'
 import SelectListComponent from './SelectListComponent'
 import MultipleSelectListComponent from './MultipleSelectListComponent'
+import { createHuntSchema } from '../validations/createHuntValidation'
 import { nationalParks } from '../data/parkData'
 import { mammals } from '../data/mammalData'
 import { birds } from '../data/birdData'
@@ -20,11 +23,17 @@ const CreateHuntForm = ({ navigation }) => {
   const [selectedReptiles, setSelectedReptiles] = useState([])
   const [selectedAmphibians, setSelectedAmphibians] = useState([])
   const [selectedFish, setSelectedFish] = useState([])
+  const [errors, setErrors] = useState({})
 
-  const handleSubmit = () => {
-    // send this data to server
-    alert(
-      JSON.stringify({
+  const handleTitleChange = (text) => {
+    setTitle(text)
+    setErrors((prevErrors) => ({ ...prevErrors, title: '' }))
+  }
+
+  const handleSubmit = async () => {
+    // validate form data
+    try {
+      const formData = {
         title,
         selectedPark,
         selectedMammals,
@@ -32,16 +41,42 @@ const CreateHuntForm = ({ navigation }) => {
         selectedReptiles,
         selectedAmphibians,
         selectedFish,
-      })
-    )
-    setTitle('')
-    setSelectedPark('')
-    setSelectedMammals([])
-    setSelectedBirds([])
-    setSelectedReptiles([])
-    setSelectedAmphibians([])
-    setSelectedFish([])
-    navigation.navigate('Hunt', { huntTitle: title })
+      }
+      // validate fromData against the schema
+      await createHuntSchema.validate(formData, { abortEarly: false })
+      // if successful
+      setErrors({})
+      // send this data to server
+      alert(
+        JSON.stringify({
+          title,
+          selectedPark,
+          selectedMammals,
+          selectedBirds,
+          selectedReptiles,
+          selectedAmphibians,
+          selectedFish,
+        })
+      )
+      // reset the form
+      setTitle('')
+      setSelectedPark('')
+      setSelectedMammals([])
+      setSelectedBirds([])
+      setSelectedReptiles([])
+      setSelectedAmphibians([])
+      setSelectedFish([])
+      // navigate to the newly created hunt page
+      navigation.navigate('Hunt', { huntTitle: title })
+    } catch (err) {
+      if (err instanceof Yup.ValidationError) {
+        const newErrors = err.inner.reduce((acc, currentError) => {
+          acc[currentError.path] = currentError.message
+          return acc
+        }, {})
+        setErrors(newErrors)
+      }
+    }
   }
 
   return (
@@ -50,64 +85,56 @@ const CreateHuntForm = ({ navigation }) => {
       <TextInput
         placeholder='Add a title'
         value={title}
-        onChangeText={setTitle}
+        // onChangeText={setTitle}
+        onChangeText={handleTitleChange}
         style={FormStyles.input}
       />
+      {errors.title && (
+        <StyledText style={FormStyles.error}>{errors.title}</StyledText>
+      )}
       <StyledText style={FormStyles.label}>Select a park</StyledText>
       <SelectListComponent
         data={nationalParks}
         setSelected={(val) => setSelectedPark(val)}
-        // onSelect={() => console.log(selectedPark)}
       />
       <StyledText style={FormStyles.label}>Select mammals</StyledText>
       <MultipleSelectListComponent
         data={mammals}
         label='Mammals'
         setSelected={(val) => setSelectedMammals(val)}
-        // onSelect={() => console.log(selectedMammals)}
       />
       <StyledText style={FormStyles.label}>Select birds</StyledText>
       <MultipleSelectListComponent
         data={birds}
         label='Birds'
         setSelected={(val) => setSelectedBirds(val)}
-        // onSelect={() => console.log(selectedBirds)}
       />
       <StyledText style={FormStyles.label}>Select reptiles</StyledText>
       <MultipleSelectListComponent
         data={reptiles}
         label='Reptiles'
         setSelected={(val) => setSelectedReptiles(val)}
-        // onSelect={() => console.log(selectedReptiles)}
       />
       <StyledText style={FormStyles.label}>Select amphibians</StyledText>
       <MultipleSelectListComponent
         data={amphibians}
         label='Amphibians'
         setSelected={(val) => setSelectedAmphibians(val)}
-        // onSelect={() => console.log(selectedAmphibians)}
       />
       <StyledText style={FormStyles.label}>Select fish</StyledText>
       <MultipleSelectListComponent
         data={fish}
         label='Fish'
         setSelected={(val) => setSelectedFish(val)}
-        // onSelect={() => console.log(selectedFish)}
       />
       <StyledButton
         onPress={handleSubmit}
         title='Create Hunt'
-        style={styles.submitBtn}
+        style={FormSubmitBtnStyles}
       />
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  submitBtn: {
-    marginBottom: 25,
-  },
-})
 
 export default CreateHuntForm
 

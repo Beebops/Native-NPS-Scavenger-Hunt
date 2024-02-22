@@ -1,17 +1,28 @@
 import React from 'react'
-import { SafeAreaView, Text, StyleSheet, View } from 'react-native'
+import { SafeAreaView, Text, StyleSheet, View, ScrollView } from 'react-native'
 import HeaderImage from '../components/HeaderImage'
 import StyledText from '../components/StyledText'
-import { mammals } from '../data/mammalData'
+import { huntSpeciesData } from '../data/huntSpeciesData'
 import StyledButton from '../components/StyledButton'
+import HuntSpeciesList from '../components/HuntSpeciesList'
+import { FormSubmitBtnStyles } from '../components/FormSubmitBtnStyles'
 
 const Hunt = () => {
+  const handleSubmit = () => {
+    console.log('sending data to database')
+  }
+
   return (
     <View style={styles.container}>
       <HeaderImage
         source={require('../assets/images/acadia-national-park.jpg')}
       />
-      <StyledButton title='Mark complete' />
+      <HuntSpeciesList />
+      <StyledButton
+        onPress={handleSubmit}
+        title='Mark complete'
+        style={FormSubmitBtnStyles}
+      ></StyledButton>
     </View>
   )
 }
