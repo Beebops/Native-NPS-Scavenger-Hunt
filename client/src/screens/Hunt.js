@@ -1,24 +1,27 @@
 import { useState, useEffect } from 'react'
-import { StyleSheet, View } from 'react-native'
-import HeaderImage from '../components/HeaderImage'
+import { FlatList, StyleSheet } from 'react-native'
+import ListHeader from '../components/ListHeader'
 import StyledButton from '../components/StyledButton'
-import HuntSpeciesList from '../components/HuntSpeciesList'
+import SpeciesListItem from '../components/SpeciesListItem'
 import { huntSpeciesData } from '../data/huntSpeciesData'
-import HuntIcon from '../components/HuntIcon'
 
 const Hunt = () => {
   const [speciesData, setSpeciesData] = useState(huntSpeciesData)
-  const [allFound, setAllFound] = useState(false)
+  const [completionPercentage, setcompletionPercentage] = useState(0)
+  const [animalsFound, setAnimalsFound] = useState(0)
 
   useEffect(() => {
-    const areAllFound = speciesData.every((species) => species.isFound)
-    setAllFound(areAllFound)
+    const totalSpecies = speciesData.length
+    const foundSpecies = speciesData.filter((species) => species.isFound).length
+    const newCompletionPercentage = (foundSpecies / totalSpecies) * 100
+    setAnimalsFound(foundSpecies)
+    setcompletionPercentage(newCompletionPercentage.toFixed(0))
   }, [speciesData])
 
+  // toggles the isFound property of the selected species id
   const toggleFoundState = (id) => {
     const newData = speciesData.map((item) => {
       if (item.id === id) {
-        // toggle the isFound state of the selected species id
         return { ...item, isFound: !item.isFound }
       }
 
@@ -28,47 +31,42 @@ const Hunt = () => {
   }
 
   const handleSubmit = () => {
-    console.log('sending data to database')
+    console.log('marking hunt as complete in database')
   }
 
   return (
-    <View style={styles.container}>
-      <HeaderImage
-        source={require('../assets/images/acadia-national-park.jpg')}
-      />
-      <View style={styles.iconsContainer}>
-        <HuntIcon text={'Percent'} iconName={'medal'} />
-        <HuntIcon text={'Started on:'} iconName={'medal'} />
-        <HuntIcon text={'5 animals to find'} iconName={'medal'} />
-        <HuntIcon text={'Photos'} iconName={'medal'} />
-      </View>
-      <HuntSpeciesList
-        speciesData={speciesData}
-        toggleIsFound={toggleFoundState}
-      />
-      <StyledButton
-        onPress={handleSubmit}
-        title='Mark complete'
-        style={styles.submitBtn}
-        disabled={!allFound}
-      ></StyledButton>
-    </View>
+    <FlatList
+      data={speciesData}
+      renderItem={({ item }) => (
+        <SpeciesListItem
+          commonName={item.commonName}
+          scientificName={item.scientificName}
+          isFound={item.isFound}
+          onFoundChange={() => toggleFoundState(item.id)}
+        />
+      )}
+      keyExtractor={(item) => item.id.toString()}
+      ListHeaderComponent={
+        <ListHeader
+          completionPercentage={completionPercentage}
+          animalsFound={animalsFound}
+        />
+      }
+      ListFooterComponent={
+        <StyledButton
+          style={styles.footer}
+          onPress={handleSubmit}
+          title={'Mark complete'}
+          disabled={completionPercentage < 100}
+        />
+      }
+    />
   )
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  iconsContainer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginVertical: 18,
-  },
-  submitBtn: {
-    marginTop: 18,
-    marginBottom: 25,
+  footer: {
+    marginTop: 10,
   },
 })
 

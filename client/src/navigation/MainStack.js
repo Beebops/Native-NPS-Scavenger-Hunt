@@ -14,7 +14,7 @@ const Stack = createNativeStackNavigator()
 const MainStack = () => {
   return (
     <Stack.Navigator
-      initialRouteName='Login'
+      initialRouteName='Hunt'
       screenOptions={{
         headerStyle: {
           backgroundColor: '#230E10',
@@ -60,6 +60,7 @@ const MainStack = () => {
         component={CreateHunt}
         options={{ headerShown: false }}
       />
+
       <Stack.Screen
         name='Hunt'
         component={Hunt}

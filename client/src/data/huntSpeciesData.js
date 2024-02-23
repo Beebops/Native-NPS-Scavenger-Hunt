@@ -17,4 +17,10 @@ export const huntSpeciesData = [
     scientificName: 'Falco peregrinus',
     isFound: false,
   },
+  {
+    id: 4,
+    commonName: 'Gray Wolf',
+    scientificName: 'Canis Lupus',
+    isFound: false,
+  },
 ]

@@ -1,15 +1,6 @@
 import React from 'react'
-import {
-  SafeAreaView,
-  Text,
-  StyleSheet,
-  StatusBar,
-  View,
-  Pressable,
-  ScrollView,
-} from 'react-native'
+import { StyleSheet, View, Pressable, ScrollView } from 'react-native'
 import LgCard from '../components/LgCard'
-import StyledText from '../components/StyledText'
 
 const Hunts = ({ navigation, numberOfHunts = 1 }) => {
   return (

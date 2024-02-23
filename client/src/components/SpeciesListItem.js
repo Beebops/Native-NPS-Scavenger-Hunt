@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 10,
     padding: 8,
+    marginHorizontal: 20,
     marginBottom: 10,
   },
   speciesText: {

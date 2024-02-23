@@ -1,4 +1,6 @@
-import { StyleSheet, Image } from 'react-native'
+import { StyleSheet, Image, Dimensions } from 'react-native'
+const { width, height } = Dimensions.get('window')
+
 const HeaderImage = ({ source }) => {
   return (
     <>
@@ -10,7 +12,7 @@ const HeaderImage = ({ source }) => {
 const styles = StyleSheet.create({
   image: {
     width: '100%',
-    maxHeight: '25%',
+    height: height * 0.25,
   },
 })
 
