@@ -5,7 +5,7 @@ import StyledButton from '../components/StyledButton'
 import SpeciesListItem from '../components/SpeciesListItem'
 import { huntSpeciesData } from '../data/huntSpeciesData'
 
-const Hunt = () => {
+const Hunt = ({ navigation }) => {
   const [speciesData, setSpeciesData] = useState(huntSpeciesData)
   const [completionPercentage, setcompletionPercentage] = useState(0)
   const [animalsFound, setAnimalsFound] = useState(0)
@@ -43,6 +43,7 @@ const Hunt = () => {
           scientificName={item.scientificName}
           isFound={item.isFound}
           onFoundChange={() => toggleFoundState(item.id)}
+          navigation={navigation}
         />
       )}
       keyExtractor={(item) => item.id.toString()}

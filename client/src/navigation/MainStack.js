@@ -8,6 +8,7 @@ import PhotoGallery from '../screens/PhotoGallery'
 import MainTabNavigator from './MainTabNavigator'
 import CreateHunt from '../screens/CreateHunt'
 import Hunt from '../screens/Hunt'
+import SpeciesDetail from '../screens/SpeciesDetail'
 
 const Stack = createNativeStackNavigator()
 
@@ -69,6 +70,16 @@ const MainStack = () => {
           headerBackTitleVisible: false,
         })}
       />
+      <Stack.Screen
+        name='SpeciesDetail'
+        component={SpeciesDetail}
+        options={({ route }) => ({
+          headerShown: true,
+          headerBackTitleVisible: false,
+          title: route.params.speciesName ?? 'Animal Species',
+        })}
+      />
+
       <Stack.Screen
         name='MainTabNavigator'
         component={MainTabNavigator}

@@ -1,6 +1,13 @@
 import { View, Text, StyleSheet } from 'react-native'
 import HeaderImage from './HeaderImage'
 
+const startDate = new Date()
+const formattedStartDate = startDate.toLocaleDateString('en-US', {
+  year: '2-digit',
+  month: '2-digit',
+  day: '2-digit',
+})
+
 const ListHeader = ({ completionPercentage, animalsFound }) => {
   return (
     <View style={styles.container}>
@@ -21,7 +28,9 @@ const ListHeader = ({ completionPercentage, animalsFound }) => {
           <Text style={styles.iconsText}>complete</Text>
         </View>
         <View style={styles.wrapper}>
-          <Text style={[styles.iconsText, styles.dynamicText]}>10/10/24</Text>
+          <Text style={[styles.iconsText, styles.dynamicText]}>
+            {formattedStartDate}
+          </Text>
           <Text style={styles.iconsText}>Start date</Text>
         </View>
       </View>
